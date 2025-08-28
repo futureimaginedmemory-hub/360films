@@ -25,11 +25,16 @@
             e.preventDefault();
             e.stopPropagation();
             
-            // Get post ID from card classes
+            // Get post ID from card
             const postId = getPostIdFromCard(this);
+            console.log('Card clicked:', this, 'Post ID:', postId);
+            console.log('Card attributes:', this.getAttribute('data-post-id'), this.getAttribute('data-content-type'));
+            
             if (postId) {
                 console.log('Opening custom lightbox for post ID:', postId);
                 openPortfolioLightbox(postId);
+            } else {
+                console.warn('No post ID found for card', this);
             }
             
             return false;
@@ -39,6 +44,13 @@
     }
 
     function getPostIdFromCard(cardElement) {
+        // First try data-post-id attribute (preferred method)
+        const postId = $(cardElement).data('post-id') || $(cardElement).attr('data-post-id');
+        if (postId) {
+            return postId;
+        }
+        
+        // Fallback to class name method
         const classes = cardElement.className;
         const match = classes.match(/wpgb-post-(\d+)/);
         return match ? match[1] : null;
@@ -50,12 +62,12 @@
         
         // Fetch portfolio data via AJAX
         $.ajax({
-            url: wpgb_portfolio_ajax.ajax_url,
+            url: wpgb_ajax.ajax_url,
             type: 'POST',
             data: {
-                action: 'get_portfolio_lightbox_content',
+                action: 'wpgb_get_portfolio_content',
                 post_id: postId,
-                nonce: wpgb_portfolio_ajax.nonce
+                nonce: wpgb_ajax.nonce
             },
             success: function(response) {
                 hideLoadingOverlay();
