@@ -295,6 +295,32 @@ function update_portfolio_thumbnail_on_save($post_id) {
 add_action('save_post', 'update_portfolio_thumbnail_on_save');
 
 /**
+ * Extract Vimeo ID from full URL
+ */
+function extract_vimeo_id($url) {
+    if (empty($url)) return null;
+    
+    // If it's already just a number, return it
+    if (is_numeric($url)) return $url;
+    
+    // Extract ID from various Vimeo URL formats
+    $patterns = array(
+        '/vimeo\.com\/(\d+)/',
+        '/player\.vimeo\.com\/video\/(\d+)/',
+        '/vimeo\.com\/channels\/[^\/]+\/(\d+)/',
+        '/vimeo\.com\/groups\/[^\/]+\/videos\/(\d+)/',
+    );
+    
+    foreach ($patterns as $pattern) {
+        if (preg_match($pattern, $url, $matches)) {
+            return $matches[1];
+        }
+    }
+    
+    return null;
+}
+
+/**
  * Add post data to WP Grid Builder cards for JavaScript targeting
  */
 function wpgb_add_post_data_to_card($attributes, $post) {
@@ -306,12 +332,48 @@ function wpgb_add_post_data_to_card($attributes, $post) {
         if ($content_type === 'Stills') {
             $attributes['data-gallery-count'] = count(get_field('gallery', $post->ID) ?: array());
         } else {
-            $attributes['data-video-id'] = get_field('video_id', $post->ID);
+            // Get video ID or URL and extract just the ID
+            $video_field = get_field('video_id', $post->ID) ?: get_field('video_url', $post->ID);
+            $clean_video_id = extract_vimeo_id($video_field);
+            
+            $attributes['data-video-id'] = $clean_video_id;
+            
+            // Also provide the full Vimeo player URL for WPGridBuilder
+            if ($clean_video_id) {
+                $attributes['data-vimeo-player-url'] = "https://player.vimeo.com/video/{$clean_video_id}?autoplay=1";
+            }
         }
     }
     return $attributes;
 }
 add_filter('wpgb/card/attributes', 'wpgb_add_post_data_to_card', 10, 2);
+
+/**
+ * Provide video URL for WPGridBuilder card links
+ */
+function wpgb_get_video_url_for_card($value, $post_id, $args) {
+    if (get_post_type($post_id) !== 'portfolio') {
+        return $value;
+    }
+    
+    $content_type = get_field('content_type', $post_id);
+    if ($content_type === 'Stills') {
+        return $value; // Use default for stills
+    }
+    
+    // Get video ID or URL and extract just the ID
+    $video_field = get_field('video_id', $post_id) ?: get_field('video_url', $post_id);
+    $clean_video_id = extract_vimeo_id($video_field);
+    
+    if ($clean_video_id) {
+        return "https://player.vimeo.com/video/{$clean_video_id}?autoplay=1&title=0&byline=0&portrait=0";
+    }
+    
+    return $value;
+}
+add_filter('wpgb/card/video_url', 'wpgb_get_video_url_for_card', 10, 3);
+add_filter('wpgb/card/custom_field_video_url', 'wpgb_get_video_url_for_card', 10, 3);
+add_filter('wpgb/card/custom_field_video_id', 'wpgb_get_video_url_for_card', 10, 3);
 
 /**
  * Enqueue custom scripts and styles for portfolio lightbox
