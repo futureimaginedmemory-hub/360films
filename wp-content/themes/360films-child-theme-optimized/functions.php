@@ -291,6 +291,20 @@ function films360_child_custom_scripts() {
             true
         );
 
+        // Enqueue WPGridBuilder Video Lightbox JS and CSS
+        wp_enqueue_script( 'wpgridbuilder-video-lightbox',
+            get_stylesheet_directory_uri() . '/assets/js/wpgridbuilder-video-lightbox.js',
+            array('jquery'),
+            $version,
+            true
+        );
+        
+        wp_enqueue_style( 'wpgridbuilder-video-lightbox',
+            get_stylesheet_directory_uri() . '/assets/css/wpgridbuilder-video-lightbox.css',
+            array(),
+            $version
+        );
+
         // Get all portfolio posts with their data
         $portfolio_data = array();
         // Support both potential CPT slugs used by Visual Portfolio/Kadence
@@ -412,7 +426,7 @@ function films360_child_custom_scripts() {
             'ajaxurl' => admin_url( 'admin-ajax.php' ),
             'nonce' => wp_create_nonce( 'films360_nonce' ),
             'portfolio_data' => $portfolio_data,
-            'cache_buster' => $cache_buster, // Include cache buster in data
+            'cache_buster' => $version, // Use version as cache buster
             'version' => 'v10-vimeo-only' // Version identifier
         ));
     }
