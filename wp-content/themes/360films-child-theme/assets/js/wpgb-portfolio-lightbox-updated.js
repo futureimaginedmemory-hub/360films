@@ -6,9 +6,19 @@
 (function($) {
     'use strict';
 
+    // Compatibility fix: if wpgb_portfolio_ajax doesn't exist but wpgb_ajax does, create alias
+    if (typeof wpgb_portfolio_ajax === 'undefined' && typeof wpgb_ajax !== 'undefined') {
+        window.wpgb_portfolio_ajax = wpgb_ajax;
+        console.log('Created wpgb_portfolio_ajax alias for compatibility');
+    }
+
     // Wait for DOM and WP Grid Builder to be ready
     $(document).ready(function() {
         console.log('WP Grid Builder Portfolio Lightbox Override initialized');
+        console.log('Available AJAX variables:', {
+            wpgb_ajax: typeof wpgb_ajax !== 'undefined' ? wpgb_ajax : 'undefined',
+            wpgb_portfolio_ajax: typeof wpgb_portfolio_ajax !== 'undefined' ? wpgb_portfolio_ajax : 'undefined'
+        });
         
         // Override WP Grid Builder's lightbox initialization
         setTimeout(function() {
@@ -60,14 +70,23 @@
         // Show loading state
         showLoadingOverlay();
         
-        // Fetch portfolio data via AJAX
+        // Fetch portfolio data via AJAX - use available variable
+        const ajaxVars = (typeof wpgb_ajax !== 'undefined') ? wpgb_ajax : 
+                        (typeof wpgb_portfolio_ajax !== 'undefined') ? wpgb_portfolio_ajax : null;
+        
+        if (!ajaxVars) {
+            console.error('No AJAX variables available. Check if wpgb_ajax is localized.');
+            hideLoadingOverlay();
+            return;
+        }
+        
         $.ajax({
-            url: wpgb_ajax.ajax_url,
+            url: ajaxVars.ajax_url,
             type: 'POST',
             data: {
                 action: 'wpgb_get_portfolio_content',
                 post_id: postId,
-                nonce: wpgb_ajax.nonce
+                nonce: ajaxVars.nonce
             },
             success: function(response) {
                 hideLoadingOverlay();

@@ -323,7 +323,7 @@ function wpgb_portfolio_assets() {
             'wpgb-portfolio-lightbox',
             get_stylesheet_directory_uri() . '/assets/js/wpgb-portfolio-lightbox-updated.js',
             array('jquery'),
-            '1.1.0',
+            '1.2.0',
             true
         );
         
