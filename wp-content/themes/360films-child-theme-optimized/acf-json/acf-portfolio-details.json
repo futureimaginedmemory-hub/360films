@@ -1,0 +1,232 @@
+[
+  {
+    "key": "group_689371cb734f0",
+    "title": "Portfolio details",
+    "fields": [
+      {
+        "key": "field_6893_content_type",
+        "label": "Content Type",
+        "name": "content_type",
+        "aria-label": "",
+        "type": "select",
+        "instructions": "Select the type of work item.",
+        "required": 1,
+        "conditional_logic": 0,
+        "wrapper": {"width": "","class": "","id": ""},
+        "choices": {
+          "commercials": "Commercials",
+          "stills": "Stills",
+          "music-videos": "Music Videos"
+        },
+        "default_value": [],
+        "return_format": "value",
+        "multiple": 0,
+        "allow_null": 0,
+        "ui": 1,
+        "ajax": 0,
+        "placeholder": "Select content type"
+      },
+      {
+        "key": "field_689371cc48738",
+        "label": "Video ID",
+        "name": "video_id",
+        "aria-label": "",
+        "type": "text",
+        "instructions": "Enter the Vimeo video ID (digits) or paste a full Vimeo URL.",
+        "required": 0,
+        "conditional_logic": [
+          [
+            {"field": "field_6893_content_type", "operator": "==", "value": "commercials"}
+          ],
+          [
+            {"field": "field_6893_content_type", "operator": "==", "value": "music-videos"}
+          ]
+        ],
+        "wrapper": {"width": "","class": "","id": ""},
+        "default_value": "",
+        "maxlength": "",
+        "allow_in_bindings": 0,
+        "placeholder": "e.g. 123456789",
+        "prepend": "",
+        "append": ""
+      },
+      {
+        "key": "field_68a07a85141d9",
+        "label": "Production Company",
+        "name": "int_production_company",
+        "aria-label": "",
+        "type": "text",
+        "instructions": "",
+        "required": 1,
+        "conditional_logic": 0,
+        "wrapper": {"width": "","class": "","id": ""},
+        "default_value": "",
+        "maxlength": "",
+        "allow_in_bindings": 0,
+        "placeholder": "",
+        "prepend": "",
+        "append": ""
+      },
+      {
+        "key": "field_68945d5248739",
+        "label": "Director",
+        "name": "director",
+        "aria-label": "",
+        "type": "text",
+        "instructions": "",
+        "required": 0,
+        "conditional_logic": 0,
+        "wrapper": {"width": "","class": "","id": ""},
+        "default_value": "",
+        "maxlength": "",
+        "allow_in_bindings": 0,
+        "placeholder": "",
+        "prepend": "",
+        "append": ""
+      },
+      {
+        "key": "field_68a07a9e141da",
+        "label": "Agency",
+        "name": "agency",
+        "aria-label": "",
+        "type": "text",
+        "instructions": "",
+        "required": 1,
+        "conditional_logic": 0,
+        "wrapper": {"width": "","class": "","id": ""},
+        "default_value": "",
+        "maxlength": "",
+        "allow_in_bindings": 0,
+        "placeholder": "",
+        "prepend": "",
+        "append": ""
+      },
+      {
+        "key": "field_68a07aa6141db",
+        "label": "SA Service Company",
+        "name": "sa_service_co",
+        "aria-label": "",
+        "type": "text",
+        "instructions": "",
+        "required": 1,
+        "conditional_logic": 0,
+        "wrapper": {"width": "","class": "","id": ""},
+        "default_value": "",
+        "maxlength": "",
+        "allow_in_bindings": 0,
+        "placeholder": "",
+        "prepend": "",
+        "append": ""
+      },
+      {
+        "key": "field_68945d604873a",
+        "label": "Year",
+        "name": "year",
+        "aria-label": "",
+        "type": "date_picker",
+        "instructions": "",
+        "required": 0,
+        "conditional_logic": 0,
+        "wrapper": {"width": "","class": "","id": ""},
+        "display_format": "F Y",
+        "return_format": "F Y",
+        "first_day": 1,
+        "default_to_current_date": 0,
+        "allow_in_bindings": 0
+      },
+      {
+        "key": "field_6893_record_label_inline",
+        "label": "Record label",
+        "name": "record_label",
+        "aria-label": "",
+        "type": "text",
+        "instructions": "Appears for Music Videos.",
+        "required": 0,
+        "conditional_logic": [
+          [
+            {"field": "field_6893_content_type", "operator": "==", "value": "music-videos"}
+          ]
+        ],
+        "wrapper": {"width": "","class": "","id": ""},
+        "default_value": "",
+        "maxlength": "",
+        "allow_in_bindings": 0,
+        "placeholder": "e.g. Darkroom/Interscope",
+        "prepend": "",
+        "append": ""
+      },
+      {
+        "key": "field_6893_photographer_inline",
+        "label": "Photographer",
+        "name": "photographer",
+        "aria-label": "",
+        "type": "text",
+        "instructions": "Appears for Stills.",
+        "required": 0,
+        "conditional_logic": [
+          [
+            {"field": "field_6893_content_type", "operator": "==", "value": "stills"}
+          ]
+        ],
+        "wrapper": {"width": "","class": "","id": ""},
+        "default_value": "",
+        "maxlength": "",
+        "allow_in_bindings": 0,
+        "placeholder": "e.g. Annie Leibovitz",
+        "prepend": "",
+        "append": ""
+      },
+      {
+        "key": "field_6893_stills_gallery",
+        "label": "Stills Gallery",
+        "name": "stills_gallery",
+        "aria-label": "",
+        "type": "gallery",
+        "instructions": "Upload one or more images for this Stills item.",
+        "required": 0,
+        "conditional_logic": [
+          [
+            {"field": "field_6893_content_type", "operator": "==", "value": "stills"}
+          ]
+        ],
+        "wrapper": {"width": "","class": "","id": ""},
+        "return_format": "array",
+        "preview_size": "medium",
+        "insert": "append",
+        "library": "all",
+        "min": 0,
+        "max": 0,
+        "min_width": 0,
+        "min_height": 0,
+        "min_size": "",
+        "max_width": 0,
+        "max_height": 0,
+        "max_size": "",
+        "mime_types": "jpg,jpeg,png,webp"
+      }
+    ],
+    "location": [
+      [
+        {"param": "post_type","operator": "==","value": "portfolio"}
+      ],
+      [
+        {"param": "post_type","operator": "==","value": "vp_portfolio"}
+      ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+      "discussion",
+      "author",
+      "format",
+      "page_attributes",
+      "send-trackbacks"
+    ],
+    "active": true,
+    "description": "",
+    "show_in_rest": 0
+  }
+]

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+	<node>
+		<title><![CDATA[PayPal “Welcome to the PayPal Economy”]]></title>
+		<video_id><![CDATA[https://vimeo.com/1109113722?fl=pl&fe=sh]]></video_id>
+		<director><![CDATA[Leonardo Dalessandri]]></director>
+		<int_production_company><![CDATA[Slim Pictures, USA]]></int_production_company>
+		<agency><![CDATA[The Community]]></agency>
+		<sa_service_co><![CDATA[Atomik Pictures]]></sa_service_co>
+		<year><![CDATA[20250101]]></year>
+	</node>
+	<node>
+		<title><![CDATA[Persil “You Always Give Your Best”]]></title>
+		<video_id><![CDATA[https://vimeo.com/1109113722?fl=pl&fe=sh]]></video_id>
+		<director><![CDATA[Rudi Schwab]]></director>
+		<int_production_company><![CDATA[TwinFilm, Germany]]></int_production_company>
+		<agency><![CDATA[HeimatTBWA\]]></agency>
+		<sa_service_co><![CDATA[Simpleman]]></sa_service_co>
+		<year><![CDATA[20241201]]></year>
+	</node>
+	<node>
+		<title><![CDATA[CC&W “Sheet Cake Campaign”]]></title>
+		<video_id><![CDATA[https://vimeo.com/1109113722?fl=pl&fe=sh]]></video_id>
+		<director><![CDATA[Jörn Threlfall]]></director>
+		<int_production_company><![CDATA[Film Deluxe, Germany]]></int_production_company>
+		<agency><![CDATA[Brand Lounge]]></agency>
+		<sa_service_co><![CDATA[Superkind]]></sa_service_co>
+		<year><![CDATA[20241101]]></year>
+	</node>
+	<node>
+		<title><![CDATA[Lotus Biscoff “Cookie – Family”]]></title>
+		<video_id><![CDATA[https://vimeo.com/1109113892?fl=pl&fe=sh]]></video_id>
+		<director><![CDATA[Ben Mege]]></director>
+		<int_production_company><![CDATA[Caviar, Belgium]]></int_production_company>
+		<agency><![CDATA[Dept. Brand and Advertising]]></agency>
+		<sa_service_co><![CDATA[Superkind]]></sa_service_co>
+		<year><![CDATA[20240301]]></year>
+	</node>
+	<node>
+		<title><![CDATA[Lotus Biscoff “Spread - Office”]]></title>
+		<video_id><![CDATA[https://vimeo.com/1109115466?fl=pl&fe=sh]]></video_id>
+		<director><![CDATA[Ben Mege]]></director>
+		<int_production_company><![CDATA[Caviar, Belgium]]></int_production_company>
+		<agency><![CDATA[Dept. Brand and Advertising]]></agency>
+		<sa_service_co><![CDATA[Superkind]]></sa_service_co>
+		<year><![CDATA[20240301]]></year>
+	</node>
+</data>

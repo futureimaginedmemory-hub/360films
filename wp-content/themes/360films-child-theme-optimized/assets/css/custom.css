@@ -1,0 +1,1363 @@
+.films360-item-meta {
+  margin-top: 6px;
+  line-height: 1.3;
+  color: var(--global-palette6, #6b7280);
+  font-size: 0.9em;
+}
+.films360-item-meta .films360-director,
+.films360-item-meta .films360-agency,
+.films360-item-meta .films360-service-co,
+.films360-item-meta .films360-record-label,
+.films360-item-meta .films360-photographer {
+  margin: 2px 0;
+}
+
+/* Lightbox submeta styling to match grid meta */
+.films360-custom-lightbox .lightbox-meta {
+  margin-top: 12px;
+}
+.films360-custom-lightbox .lightbox-submeta {
+  margin-top: 6px;
+  color: var(--global-palette6, #d1d5db);
+  font-size: 0.95em;
+}
+.films360-custom-lightbox .lightbox-submeta .lightbox-record-label,
+.films360-custom-lightbox .lightbox-submeta .lightbox-photographer {
+  margin: 2px 0;
+}
+/* Visual Portfolio Custom Styles for 360 Films - KADENCE COLORS + NATIVE GRID SUPPORT */
+/* Focus: Kadence color palette + Visual Portfolio native functionality + Sam Kolder inspired layout */
+
+/* KADENCE COLOR PALETTE VARIABLES (mapped to Kadence Global Palette) */
+/* This mapping lets you control colors from Customize → Colors (Kadence Global Palette). */
+:root {
+    /* Base text / primary */
+    --films360-primary-dark: var(--global-palette1);
+    --films360-primary-medium: var(--global-palette2);
+    --films360-primary-light: var(--global-palette3);
+    /* Secondary / neutrals */
+    --films360-secondary-dark: var(--global-palette4);
+    --films360-neutral-light: var(--global-palette7);
+    --films360-neutral-very-light: var(--global-palette9);
+    /* Fixed white for backgrounds where needed */
+    --films360-white: #ffffff;
+    /* Explicit text color hook (clean B/W type) */
+    --films360-text: var(--global-palette4);
+}
+
+/* Typography – Option A: Sora (headings) + Inter (body) */
+html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+body {
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+}
+h1, h2, h3, h4, h5, h6,
+.vp-portfolio .vp-portfolio__item .vp-portfolio__item-title {
+    font-family: 'Sora', 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+h1, h2 { font-weight: 700; letter-spacing: -0.015em; line-height: 1.15; }
+h3, h4 { font-weight: 600; letter-spacing: -0.005em; line-height: 1.2; }
+h5, h6 { font-weight: 600; letter-spacing: 0; line-height: 1.25; }
+
+/* Buttons/filters emphasis */
+button,
+input[type="button"],
+input[type="submit"],
+.wp-block-button .wp-block-button__link,
+.vp-filter .vp-filter__item {
+    font-weight: 600;
+    letter-spacing: 0.04em;
+}
+
+/* Global sharp style for buttons/inputs (Kadence + core blocks) */
+.wp-block-button .wp-block-button__link,
+button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+.kadence-button,
+.kt-button,
+.kb-button,
+.button,
+.woocommerce a.button,
+.woocommerce button.button,
+.woocommerce input.button {
+    border-radius: 0 !important;
+}
+
+/* Images and containers */
+img,
+.wp-block-image img,
+.wp-block-media-text,
+.kt-inside-inner-col,
+.kt-inside-inner-col > .kt-inside-inner-col,
+.entry-content .wp-block-cover,
+.entry-content .wp-block-group {
+    border-radius: 0 !important;
+    overflow: visible; /* avoid clipping unless needed */
+}
+
+/* Form fields */
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="search"],
+textarea,
+select {
+    border-radius: 0 !important;
+}
+
+/* REMOVE ALL GRID OVERRIDES - LET VISUAL PORTFOLIO HANDLE LAYOUT COMPLETELY */
+/* Only add minimal styling that doesn't interfere with native grid functionality */
+
+/* Portfolio container - MINIMAL INTERFERENCE */
+.vp-portfolio .vp-portfolio__items {
+    box-sizing: border-box !important; /* Harmless property to avoid empty ruleset lint */
+}
+
+/* Grid item styling - Kadence colors + Sam Kolder inspired */
+.vp-portfolio .vp-portfolio__item {
+    background-color: var(--films360-neutral-very-light) !important; /* Light blue background */
+    border-radius: 0 !important; /* Client request: no rounded corners */
+    box-shadow: none !important; /* Remove card shadow */
+    overflow: hidden !important;
+    transition: transform 0.2s ease-in-out !important; /* no box-shadow transition */
+    position: relative !important;
+    cursor: pointer !important;
+    border: none !important; /* Remove card border */
+    box-sizing: border-box !important; /* Ensure borders/padding don't break column widths */
+    will-change: transform !important;
+    /* REMOVED: margin-bottom - let Visual Portfolio handle spacing */
+    /* REMOVED: Custom height constraints - let content determine height */
+    height: auto !important; /* Allow cards to expand with content */
+    min-height: auto !important;
+}
+
+/* Remove hover lift on items */
+.vp-portfolio .vp-portfolio__item:hover {
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* Remove enhanced hover for video items */
+.vp-portfolio .vp-portfolio__item.has-video:hover {
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* REMOVE ALL PLAY BUTTONS COMPLETELY - OPTIMIZED */
+.vp-portfolio .vp-portfolio__item::before,
+.vp-portfolio .vp-portfolio__item::after,
+.vp-portfolio .vp-portfolio__item.has-video::before,
+.vp-portfolio .vp-portfolio__item.has-video::after,
+.vp-portfolio .vp-portfolio__item[data-video-url]::before,
+.vp-portfolio .vp-portfolio__item[data-video-url]::after {
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+    content: none;
+    width: 0;
+    height: 0;
+}
+
+/* Image container styling - OPTIMIZED */
+.vp-portfolio .vp-portfolio__item .vp-portfolio__item-img,
+.vp-portfolio .vp-portfolio__item .vp-portfolio__item-image-wrap {
+    position: relative;
+    overflow: hidden;
+    background: var(--films360-neutral-light);
+    z-index: 0; /* establish stacking context below title overlay */
+}
+
+/* Force any overlay elements over image area to be transparent */
+.vp-portfolio .vp-portfolio__item .vp-portfolio__item-img .vp-portfolio__item-overlay,
+.vp-portfolio .vp-portfolio__item .vp-portfolio__item-image-wrap .vp-portfolio__item-overlay,
+.vp-portfolio .vp-portfolio__item:hover .vp-portfolio__item-img .vp-portfolio__item-overlay,
+.vp-portfolio .vp-portfolio__item:hover .vp-portfolio__item-image-wrap .vp-portfolio__item-overlay {
+    background: transparent !important;
+}
+
+.vp-portfolio .vp-portfolio__item .vp-portfolio__item-img img,
+.vp-portfolio .vp-portfolio__item .vp-portfolio__item-image img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    transition: opacity 0.2s ease-in-out !important;
+}
+
+/* Indicate click by fading image slightly instead of zoom/lift */
+.vp-portfolio .vp-portfolio__item:hover .vp-portfolio__item-img img,
+.vp-portfolio .vp-portfolio__item:hover .vp-portfolio__item-image img {
+    opacity: 0.85 !important;
+}
+
+/* Allow hover opacity for stills too (remove previous exceptions) */
+
+/* Disable any overlay/pseudo elements for stills */
+.vp-portfolio .vp-portfolio__item.is-stills::before,
+.vp-portfolio .vp-portfolio__item.is-stills::after,
+.vp-portfolio .vp-portfolio__item.is-stills .vp-portfolio__item-img::before,
+.vp-portfolio .vp-portfolio__item.is-stills .vp-portfolio__item-img::after,
+.vp-portfolio .vp-portfolio__item.is-stills .vp-portfolio__item-image-wrap::before,
+.vp-portfolio .vp-portfolio__item.is-stills .vp-portfolio__item-image-wrap::after {
+    display: none !important;
+    content: none !important;
+    opacity: 0 !important;
+}
+
+/* Never show hover video layer for stills */
+.vp-portfolio .vp-portfolio__item.is-stills .films360-hover-video {
+    display: none !important;
+}
+
+/* Stills: keep overlay/content transparent to avoid white flash */
+.vp-portfolio .vp-portfolio__item.is-stills .vp-portfolio__item-overlay,
+.vp-portfolio .vp-portfolio__item.is-stills .vp-portfolio__item-content {
+    background: transparent !important;
+}
+
+/* OPTIMIZED Hover video container */
+.vp-portfolio .vp-portfolio__item .films360-hover-video {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    opacity: 0 !important;
+    z-index: 2; /* ensure video overlays image but stays within card */
+    pointer-events: none; /* prevent hover conflicts */
+    visibility: hidden !important;
+    transition: opacity 0.15s ease-in-out, visibility 0.15s ease-in-out !important;
+    background: #000 !important;
+    overflow: hidden !important;
+    border-radius: 0 !important; /* Match card: no rounded corners */
+}
+
+.vp-portfolio .vp-portfolio__item .films360-hover-video.active {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Contain video strictly within the image area to avoid sibling bleed */
+.vp-portfolio .vp-portfolio__item .vp-portfolio__item-img,
+.vp-portfolio .vp-portfolio__item .vp-portfolio__item-image-wrap,
+.vp-portfolio .vp-portfolio__item .vp-portfolio__item-image,
+.vp-portfolio .vp-portfolio__item .vp-portfolio__item-image-wrap {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Disable base image transitions on video items to prevent flicker during hover state changes */
+.vp-portfolio .vp-portfolio__item:not(.is-stills) .vp-portfolio__item-img img,
+.vp-portfolio .vp-portfolio__item:not(.is-stills) .vp-portfolio__item-image img {
+    transition: none !important;
+    backface-visibility: hidden;
+    will-change: opacity;
+}
+
+/* OPTIMIZED Hover video iframe */
+.vp-portfolio .vp-portfolio__item .films360-hover-video-iframe {
+    width: 100% !important;
+    height: 100% !important;
+    border: none !important;
+    object-fit: cover !important;
+    transform: translateZ(0) !important; /* Hardware acceleration */
+    will-change: opacity !important;
+    pointer-events: none !important; /* Pass clicks through to card */
+}
+
+/* Original image hiding during video playback - OPTIMIZED */
+.vp-portfolio .vp-portfolio__item .vp-portfolio__item-img img.hidden,
+.vp-portfolio .vp-portfolio__item .vp-portfolio__item-image img.hidden {
+    opacity: 0 !important;
+    transition: opacity 0.15s ease-in-out !important;
+}
+
+/* Video hover state styling - OPTIMIZED */
+.vp-portfolio .vp-portfolio__item.video-hover-active {
+    transform: translateY(-2px) !important;
+    box-shadow: none !important;
+    transition: transform 0.15s ease-in-out !important;
+}
+
+.vp-portfolio .vp-portfolio__item.video-playing {
+    transform: translateY(-4px) !important;
+    box-shadow: none !important;
+}
+
+/* OPTIMIZED Loading state for video */
+.vp-portfolio .vp-portfolio__item.video-loading::after {
+    content: '' !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    width: 18px !important;
+    height: 18px !important;
+    margin: -9px 0 0 -9px !important;
+    border: 2px solid rgba(255, 255, 255, 0.3) !important;
+    border-top: 2px solid rgba(255, 255, 255, 0.8) !important;
+    border-radius: 0 !important; /* Sharp */
+    animation: optimizedVideoSpin 0.6s linear infinite !important;
+    z-index: 15 !important;
+}
+
+@keyframes optimizedVideoSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Hide preload iframes */
+.films360-preload-iframe {
+    position: absolute !important;
+    top: -9999px !important;
+    left: -9999px !important;
+    width: 1px !important;
+    height: 1px !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+/* Content area styling - Sam Kolder inspired layout with LEFT ALIGNMENT */
+.vp-portfolio .vp-portfolio__item .vp-portfolio__item-overlay,
+.vp-portfolio .vp-portfolio__item .vp-portfolio__item-content {
+    padding: 20px !important;
+    min-height: auto !important;
+    height: auto !important; /* Allow content to determine height */
+    text-align: left !important; /* LEFT ALIGN ALL CONTENT */
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    align-items: flex-start !important; /* LEFT ALIGN */
+}
+
+/* Make overlay transparent, keep content panel styled */
+.vp-portfolio .vp-portfolio__item .vp-portfolio__item-overlay {
+    background: transparent !important;
+    position: relative !important; /* avoid creating a higher stacking layer */
+    z-index: 1 !important; /* keep below our title overlay */
+    pointer-events: none !important; /* don't block hover on image area */
+}
+.vp-portfolio .vp-portfolio__item .vp-portfolio__item-content {
+    background: var(--films360-neutral-very-light) !important; /* Light background only for content area */
+}
+
+/* Force plain white background for caption block */
+.vp-portfolio .vp-portfolio__item-caption.vp-portfolio__item-caption-text-align-left {
+    background: var(--films360-white) !important;
+}
+
+/* Title styling - Bold and prominent, LEFT ALIGNED */
+.vp-portfolio .vp-portfolio__item .vp-portfolio__item-title,
+.vp-portfolio .vp-portfolio__item h3,
+.vp-portfolio .vp-portfolio__item h2 {
+    font-size: 1.4em !important;
+    margin-bottom: 12px !important;
+    font-weight: 700 !important;
+    color: var(--films360-text) !important; /* Clean black/near-black from Kadence palette */
+    line-height: 1.3 !important;
+    letter-spacing: -0.02em !important;
+    text-align: left !important; /* LEFT ALIGN */
+    width: 100% !important;
+}
+
+/* Custom fields styling - ALWAYS VISIBLE, BELOW TITLE, LEFT ALIGNED */
+.vp-portfolio .vp-portfolio__item .films360-custom-fields {
+    display: block !important;
+    margin-top: 0 !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    background: transparent !important;
+    width: 100% !important;
+    text-align: left !important; /* LEFT ALIGN */
+}
+
+/* Short description - Prominent subtitle, LEFT ALIGNED */
+.vp-portfolio .vp-portfolio__item .films360-item-description {
+    font-size: 1em !important;
+    color: var(--films360-secondary-dark) !important; /* Dark purple-gray */
+    line-height: 1.5 !important;
+    margin-bottom: 12px !important;
+    display: block !important;
+    font-weight: 400 !important;
+    letter-spacing: -0.01em !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    background: transparent !important;
+    text-align: left !important; /* LEFT ALIGN */
+    width: 100% !important;
+    /* SAM KOLDER STYLE SEPARATOR */
+    padding-bottom: 12px !important;
+    border-bottom: 1px solid var(--films360-neutral-light) !important; /* Light separator line */
+}
+
+/* Meta information - Producer role and year, LEFT ALIGNED */
+.vp-portfolio .vp-portfolio__item .films360-item-meta {
+    font-size: 0.9em !important;
+    color: var(--films360-primary-medium) !important; /* Dark teal/blue-green */
+    margin-bottom: 12px !important;
+    display: block !important;
+    font-weight: 500 !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    background: transparent !important;
+    text-align: left !important; /* LEFT ALIGN */
+    width: 100% !important;
+    /* SAM KOLDER STYLE SEPARATOR */
+    padding-bottom: 12px !important;
+    border-bottom: 1px solid var(--films360-neutral-light) !important; /* Light separator line */
+}
+
+.vp-portfolio .vp-portfolio__item .films360-role {
+    color: var(--films360-primary-light) !important; /* Medium teal */
+    font-weight: 600 !important;
+}
+
+.vp-portfolio .vp-portfolio__item .films360-year {
+    color: var(--films360-primary-medium) !important; /* Dark teal/blue-green */
+    font-weight: 500 !important;
+}
+
+/* Categories - Tag-like styling, LEFT ALIGNED */
+.vp-portfolio .vp-portfolio__item .films360-item-categories {
+    margin-top: 12px !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    background: transparent !important;
+    text-align: left !important; /* LEFT ALIGN */
+    width: 100% !important;
+}
+
+.vp-portfolio .vp-portfolio__item .films360-category {
+    display: inline-block !important;
+    background: transparent !important; /* Sharper, no fill */
+    color: var(--films360-text) !important; /* Clean text */
+    padding: 2px 10px !important; /* Tighter */
+    border-radius: 0 !important; /* Sharp tag style */
+    font-size: 0.8em !important;
+    margin-right: 6px !important;
+    margin-bottom: 4px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.03em !important; /* Crisper */
+    border: 1px solid var(--films360-neutral-light) !important; /* Subtle outline */
+    box-shadow: none !important;
+    transition: border-color 0.15s ease, color 0.15s ease !important;
+}
+
+.vp-portfolio .vp-portfolio__item .films360-category:hover {
+    background: transparent !important; /* Keep sharp */
+    color: var(--films360-text) !important;
+    border-color: var(--films360-primary-medium) !important; /* Accent outline */
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* Filter styling - Kadence colors + FULL BUTTON CLICKABLE */
+.vp-filter {
+    text-align: center !important;
+    margin-bottom: 40px !important;
+}
+
+.vp-filter .vp-filter__item,
+.vp-filter a.vp-filter__item,
+.vp-filter .vp-filter__item a {
+    display: inline-block !important;
+    margin: 6px 6px !important;
+    padding: 6px 14px !important; /* Match category chip density */
+    border-radius: 0 !important; /* Sharp */
+    background: transparent !important; /* Match category chips */
+    color: var(--films360-text) !important;
+    border: none !important; /* Remove border as requested */
+    font-family: var(--films360-font-body);
+    font-weight: 600 !important;
+    letter-spacing: 0.03em !important; /* Match chips */
+    text-transform: none !important;
+    text-decoration: none !important;
+    cursor: pointer !important;
+    box-shadow: none !important;
+    transition: border-color 0.15s ease, color 0.15s ease !important;
+}
+
+.vp-filter .vp-filter__item:hover,
+.vp-filter a.vp-filter__item:hover,
+.vp-filter .vp-filter__item.vp-filter__item--active,
+.vp-filter .vp-filter__item[aria-pressed="true"],
+.vp-filter .vp-filter__item a:hover,
+.vp-filter .vp-filter__item a:focus {
+    background: transparent !important; /* Keep sharp look */
+    color: var(--films360-text) !important;
+    border: none !important; /* Ensure no border on hover/active */
+}
+
+/* ENSURE FILTER LINKS ARE FULLY CLICKABLE */
+.vp-filter .vp-filter__item a {
+    display: inline-block !important;
+    color: inherit !important; /* ensure text inherits active/hover color */
+    text-decoration: none !important;
+    position: static !important;
+    padding: 0 !important;
+}
+
+/* Custom Lightbox Styles - Kadence colors */
+.films360-custom-lightbox {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    z-index: 999999 !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out !important;
+}
+
+.films360-custom-lightbox.active {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.films360-custom-lightbox .lightbox-overlay {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: rgba(11, 57, 72, 0.85) !important; /* Dark teal overlay */
+    cursor: pointer !important;
+}
+
+.films360-custom-lightbox .lightbox-content {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    background: transparent !important; /* No panel under video */
+    border-radius: 0 !important; /* Sharp */
+    overflow: visible !important; /* allow title below video to show */
+    width: 80vw !important; /* Wider video area */
+    max-width: 1400px !important;
+    max-height: 90vh !important; /* keep content within viewport */
+    /* no max-height so title is never clipped */
+    box-shadow: 0 20px 40px rgba(11, 57, 72, 0.3) !important;
+}
+
+/* Image lightbox: center and contain */
+.films360-custom-lightbox .lightbox-image-wrap {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 80vh !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.films360-custom-lightbox .lightbox-image-wrap .lightbox-image {
+    max-width: 100% !important;
+    max-height: 80vh !important;
+    height: auto !important;
+    width: auto !important;
+    object-fit: contain !important;
+    display: block !important;
+    margin: 0 auto !important;
+}
+
+.films360-custom-lightbox .lightbox-close {
+    position: fixed !important; /* sit on overlay, not video */
+    top: 16px !important;
+    right: 16px !important;
+    font-size: 28px !important;
+    color: var(--films360-white) !important;
+    cursor: pointer !important;
+    z-index: 1000000 !important; /* above content */
+    background: rgba(11, 57, 72, 0.6) !important; /* Dark overlay */
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 0 !important; /* Sharp close button */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: background 0.2s ease !important;
+    backdrop-filter: blur(4px) !important;
+}
+
+.films360-custom-lightbox .lightbox-close:hover {
+    background: rgba(11, 57, 72, 0.8) !important;
+}
+
+.films360-custom-lightbox .lightbox-video {
+    background: transparent !important; /* No black background behind video */
+    width: 100% !important;
+    position: relative !important; /* anchor controls inside video area */
+}
+
+/* Intrinsic ratio wrapper for reliable sizing across browsers */
+.films360-custom-lightbox .films360-embed-wrap {
+    position: relative !important;
+    width: 100% !important;
+    padding-top: 56.25% !important; /* 16:9 */
+    height: 0 !important;
+}
+
+.films360-custom-lightbox .films360-embed-wrap iframe {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    border: none !important;
+}
+
+/* Custom minimal controls overlay */
+.films360-custom-lightbox .lightbox-controls {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    z-index: 5 !important;
+    padding: 0 !important; /* no background */
+    background: transparent !important;
+    border-radius: 0 !important;
+    backdrop-filter: none !important;
+    opacity: 0; /* hidden by default; shown via class */
+    pointer-events: none; /* enable only on buttons */
+    transition: opacity 180ms ease-in-out;
+}
+.films360-custom-lightbox .lightbox-video.controls-visible .lightbox-controls {
+    opacity: 1;
+    pointer-events: auto;
+}
+.films360-custom-lightbox .lightbox-controls .ctrl {
+    appearance: none !important;
+    border: none !important;
+    background: transparent !important; /* no button background */
+    color: #fff !important;
+    width: clamp(32px, 5.5vw, 42px) !important;
+    height: clamp(32px, 5.5vw, 42px) !important;
+    border-radius: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: clamp(18px, 4.2vw, 22px) !important;
+    line-height: 1 !important;
+    cursor: pointer !important;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.55) !important; /* contrast over video */
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.25)) !important;
+    opacity: 0.95 !important;
+    pointer-events: auto !important; /* clickable */
+}
+.films360-custom-lightbox .lightbox-controls .ctrl-play {
+    position: absolute !important;
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    font-size: clamp(28px, 7vw, 44px) !important; /* bigger central button */
+}
+.films360-custom-lightbox .lightbox-controls .ctrl-mute {
+    position: absolute !important;
+    right: 12px !important;
+    bottom: 12px !important;
+}
+.films360-custom-lightbox .lightbox-controls .ctrl:hover,
+.films360-custom-lightbox .lightbox-controls .ctrl:focus {
+    outline: none !important; /* remove default outline */
+    transform: scale(1.06) !important;
+}
+.films360-custom-lightbox .lightbox-controls .ctrl:focus-visible {
+    outline: 2px solid rgba(255,255,255,0.9) !important; /* accessible focus ring */
+    outline-offset: 2px !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .films360-custom-lightbox .lightbox-controls { transition: none !important; }
+}
+
+@media (max-width: 480px), (max-height: 520px) {
+    .films360-custom-lightbox .lightbox-controls .ctrl-play { font-size: clamp(26px, 8vw, 40px) !important; }
+    .films360-custom-lightbox .lightbox-controls .ctrl-mute { right: 10px !important; bottom: 10px !important; }
+}
+
+.films360-custom-lightbox .lightbox-meta {
+    position: static !important; /* place below the video */
+    padding: 12px 0 0 0 !important;
+    margin: 0 !important;
+    background: transparent !important;
+    pointer-events: auto !important;
+    text-align: center !important;
+}
+
+.films360-custom-lightbox .lightbox-meta h3,
+.films360-custom-lightbox .lightbox-meta .lightbox-title {
+    margin: 0 !important;
+    /* Smaller title so credits fit without scrolling */
+    font-size: clamp(0.95rem, 1.6vw, 1.2rem) !important;
+    color: var(--films360-white) !important; /* Contrasting to dark overlay */
+    font-weight: 700 !important;
+    letter-spacing: -0.02em !important;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.5) !important; /* readability over video */
+}
+
+/* Lightbox credits (ACF fields) */
+.films360-custom-lightbox .lightbox-credits {
+    margin-top: 6px !important;
+    color: var(--global-palette9, #e5e7eb) !important; /* subtle, lighter than title */
+    font-size: 0.95em !important;
+    line-height: 1.4 !important;
+}
+.films360-custom-lightbox .lightbox-credits .lb-credit-item {
+    white-space: normal !important;
+}
+.films360-custom-lightbox .lightbox-credits .lb-credit-label {
+    color: var(--global-palette6, #d1d5db) !important;
+    font-weight: 600 !important;
+}
+
+/* Constrain video size so title + credits stay visible */
+.films360-custom-lightbox .lightbox-content {
+    max-width: min(900px, 92vw) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.films360-custom-lightbox .films360-embed-wrap {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+.films360-custom-lightbox .films360-embed-wrap iframe {
+    width: 100% !important;
+    /* Keep responsive 16:9 but reduce vertical footprint */
+    aspect-ratio: 16 / 9 !important;
+    height: auto !important; /* let aspect-ratio drive height */
+    max-height: 56vh !important; /* allow a bit more video while keeping space for title/credits */
+    display: block !important;
+}
+
+/* Fallback for browsers without aspect-ratio support */
+@supports not (aspect-ratio: 16 / 9) {
+  .films360-custom-lightbox .films360-embed-wrap {
+    position: relative !important;
+    padding-top: 56.25% !important; /* 16:9 */
+  }
+  .films360-custom-lightbox .films360-embed-wrap iframe {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-height: 56vh !important;
+  }
+}
+
+/* Lightbox navigation arrows */
+.films360-custom-lightbox .lightbox-nav {
+    position: fixed !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    width: 44px !important;
+    height: 64px !important;
+    border: none !important;
+    background: rgba(11, 57, 72, 0.6) !important;
+    color: var(--films360-white) !important;
+    font-size: 28px !important;
+    line-height: 1 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    z-index: 1000000 !important;
+    border-radius: 0 !important;
+    backdrop-filter: blur(3px) !important;
+}
+
+.films360-custom-lightbox .lightbox-prev { left: 16px !important; }
+.films360-custom-lightbox .lightbox-next { right: 16px !important; }
+
+.films360-custom-lightbox .lightbox-nav:hover,
+.films360-custom-lightbox .lightbox-nav:focus {
+    background: rgba(11, 57, 72, 0.8) !important;
+    outline: 2px solid rgba(255,255,255,0.6) !important;
+    outline-offset: 2px !important;
+}
+
+.films360-custom-lightbox .lightbox-meta p {
+    margin: 0 0 10px 0 !important;
+    color: var(--films360-secondary-dark) !important; /* Dark purple-gray */
+    line-height: 1.6 !important;
+    font-size: 0.95em !important;
+}
+
+.films360-custom-lightbox .lightbox-meta p:last-child {
+    margin-bottom: 0 !important;
+}
+
+.films360-custom-lightbox .lightbox-meta strong {
+    color: var(--films360-primary-light) !important; /* Medium teal */
+    font-weight: 600 !important;
+}
+
+/* RESPONSIVE GRID SUPPORT - WORK WITH VISUAL PORTFOLIO'S NATIVE GRID */
+/* DO NOT OVERRIDE GRID LAYOUT - Only add responsive styling that enhances */
+
+/* Let Visual Portfolio control image wrapper sizing to preserve grid calculations */
+.vp-portfolio .vp-portfolio__item .vp-portfolio__item-img,
+.vp-portfolio .vp-portfolio__item .vp-portfolio__item-image-wrap {
+    background: var(--films360-neutral-light) !important;
+}
+
+/* Custom styling for work page */
+.films360-portfolio-page .vp-portfolio {
+    background: var(--films360-white) !important;
+}
+
+/* Work page: hide category tags on cards */
+.films360-portfolio-page .vp-portfolio .vp-portfolio__item .films360-item-categories {
+    display: none !important;
+}
+
+/* Work page: reduce title size on cards */
+.films360-portfolio-page .vp-portfolio .vp-portfolio__item .vp-portfolio__item-title,
+.films360-portfolio-page .vp-portfolio .vp-portfolio__item h3,
+.films360-portfolio-page .vp-portfolio .vp-portfolio__item h2 {
+    font-size: 1.15em !important;
+}
+
+/* Fix for clickable items */
+.vp-portfolio .vp-portfolio__item a {
+    display: block !important;
+    text-decoration: none !important;
+    color: inherit !important;
+    cursor: pointer !important;
+}
+
+.vp-portfolio .vp-portfolio__item a:hover {
+    text-decoration: none !important;
+    color: inherit !important;
+}
+
+/* Prevent text selection on hover */
+.vp-portfolio .vp-portfolio__item {
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+}
+
+/* Touch device support */
+.vp-portfolio .vp-portfolio__item.touch-active {
+    transform: scale(0.98) !important;
+    transition: transform 0.1s ease !important;
+}
+
+/* Ensure proper spacing between elements - Sam Kolder style */
+.vp-portfolio .vp-portfolio__item .films360-item-description + .films360-item-meta {
+    margin-top: 0 !important; /* Remove extra margin since we have border separators */
+}
+
+.vp-portfolio .vp-portfolio__item .films360-item-meta + .films360-item-categories {
+    margin-top: 12px !important; /* Space before categories */
+}
+
+/* Disable hover video on touch devices */
+@media (hover: none) and (pointer: coarse) {
+    .vp-portfolio .vp-portfolio__item.video-hover-active {
+        transform: translateY(-4px) !important;
+        box-shadow: none !important;
+    }
+
+    .vp-portfolio .vp-portfolio__item .films360-hover-video {
+        z-index: 20 !important; /* Above overlay link so video is visible */
+        display: none !important;
+    }
+
+    /* Ensure no play buttons on mobile either */
+    .vp-portfolio .vp-portfolio__item::before,
+    .vp-portfolio .vp-portfolio__item.has-video::before {
+        display: none !important;
+    }
+}
+
+/* Responsive adjustments - WORK WITH VISUAL PORTFOLIO'S NATIVE RESPONSIVENESS */
+@media (max-width: 768px) {
+    /* Do not pad the portfolio container; it can affect column calculations */
+    /* Removed empty ruleset to satisfy linter */
+
+    .vp-portfolio .vp-portfolio__item .vp-portfolio__item-overlay,
+    .vp-portfolio .vp-portfolio__item .vp-portfolio__item-content {
+        padding: 16px !important;
+    }
+
+    .vp-portfolio .vp-portfolio__item .vp-portfolio__item-title,
+    .vp-portfolio .vp-portfolio__item h3,
+    .vp-portfolio .vp-portfolio__item h2 {
+        font-size: 1.2em !important;
+        margin-bottom: 10px !important;
+    }
+
+    .vp-portfolio .vp-portfolio__item .films360-item-description {
+        font-size: 0.9em !important;
+        margin-bottom: 10px !important;
+        padding-bottom: 10px !important;
+    }
+
+    .vp-portfolio .vp-portfolio__item .films360-item-meta {
+        font-size: 0.85em !important;
+        margin-bottom: 10px !important;
+        padding-bottom: 10px !important;
+    }
+
+    .vp-filter .vp-filter__item {
+        margin: 0 4px 8px 0 !important;
+        padding: 8px 16px !important;
+        font-size: 13px !important;
+    }
+
+    .films360-custom-lightbox .lightbox-content {
+        width: 95vw !important; /* use most of the width on mobile */
+        margin: 0 !important;
+        top: 50vh !important; /* vertical center */
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important; /* center both axes */
+        max-height: 90vh !important; /* confine within viewport */
+    }
+
+    .films360-custom-lightbox .films360-embed-wrap iframe {
+        height: 100% !important;
+    }
+
+    .films360-custom-lightbox .lightbox-meta {
+        position: static !important;
+        padding: 8px 0 0 0 !important;
+        margin: 0 !important;
+        text-align: center !important;
+    }
+
+    .films360-custom-lightbox .lightbox-nav {
+        width: 36px !important;
+        height: 48px !important;
+        font-size: 22px !important;
+    }
+    .films360-custom-lightbox .lightbox-prev { left: 8px !important; }
+    .films360-custom-lightbox .lightbox-next { right: 8px !important; }
+
+    /* Disable hover effects on mobile */
+    .vp-portfolio .vp-portfolio__item:hover .vp-portfolio__item-img img,
+    .vp-portfolio .vp-portfolio__item:hover .vp-portfolio__item-image img {
+        transform: none !important;
+    }
+
+    .vp-portfolio .vp-portfolio__item:hover {
+        transform: none !important;
+        box-shadow: none !important;
+    }
+
+    /* Ensure no play buttons on mobile */
+    .vp-portfolio .vp-portfolio__item::before,
+    .vp-portfolio .vp-portfolio__item.has-video::before {
+        display: none !important;
+    }
+}
+
+/* Loading animation - Kadence colors */
+.vp-portfolio .vp-portfolio__loading {
+    text-align: center !important;
+    padding: 60px !important;
+}
+
+.vp-portfolio .vp-portfolio__loading::after {
+    content: '' !important;
+    display: inline-block !important;
+    width: 40px !important;
+    height: 40px !important;
+    border: 3px solid var(--films360-neutral-light) !important;
+    border-top: 3px solid var(--films360-primary-light) !important; /* Medium teal */
+    border-radius: 50% !important;
+    animation: spin 1s linear infinite !important;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Accessibility improvements - Kadence colors */
+.vp-filter .vp-filter__item:focus,
+.vp-portfolio .vp-portfolio__item:focus {
+    outline: 2px solid var(--films360-primary-light) !important; /* Medium teal */
+    outline-offset: 2px !important;
+}
+
+.films360-custom-lightbox .lightbox-close:focus {
+    outline: 2px solid var(--films360-white) !important;
+    outline-offset: 2px !important;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .vp-portfolio .vp-portfolio__item {
+        border: 2px solid var(--films360-primary-dark) !important;
+    }
+
+    .vp-filter .vp-filter__item {
+        border: 2px solid var(--films360-primary-dark) !important;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .vp-portfolio .vp-portfolio__item,
+    .vp-portfolio .vp-portfolio__item img,
+    .vp-filter .vp-filter__item,
+    .films360-custom-lightbox,
+    .films360-hover-video {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+/* Ensure custom fields are always visible in grid */
+.vp-portfolio .vp-portfolio__item .films360-custom-fields {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Style for when both original and custom content exist */
+.vp-portfolio .vp-portfolio__item .vp-portfolio__item-excerpt + .films360-custom-fields {
+    margin-top: 12px !important;
+    border-top: none !important; /* Remove separator line below card content */
+    padding-top: 12px !important;
+}
+
+/* Enhanced typography for better readability */
+.vp-portfolio .vp-portfolio__item .films360-item-description,
+.vp-portfolio .vp-portfolio__item .films360-item-meta,
+.vp-portfolio .vp-portfolio__item .films360-item-categories {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+}
+
+/* Ensure all body copy wraps cleanly on small screens */
+.vp-portfolio .vp-portfolio__item .vp-portfolio__item-title,
+.vp-portfolio .vp-portfolio__item h2,
+.vp-portfolio .vp-portfolio__item h3,
+.vp-portfolio .vp-portfolio__item .films360-item-description,
+.vp-portfolio .vp-portfolio__item .films360-item-meta,
+.vp-portfolio .vp-portfolio__item .films360-item-categories,
+.films360-custom-lightbox .lightbox-meta,
+.films360-custom-lightbox .lightbox-title,
+.films360-custom-lightbox .lightbox-submeta {
+    white-space: normal !important;
+    word-break: normal !important;
+    overflow-wrap: break-word !important; /* wrap long tokens if needed */
+}
+
+/* Performance optimizations */
+.vp-portfolio .vp-portfolio__item .films360-hover-video-iframe {
+    will-change: opacity !important;
+    transform: translateZ(0) !important;
+}
+
+.vp-portfolio .vp-portfolio__item {
+    will-change: transform !important;
+}
+
+/* Performance optimizations */
+/* Smooth transitions for better UX */
+.vp-portfolio .vp-portfolio__item .vp-portfolio__item-img img,
+.vp-portfolio .vp-portfolio__item .vp-portfolio__item-image img {
+    transition: opacity 0.15s ease-in-out, transform 0.3s ease-in-out !important;
+}
+
+/* Debug styles (remove in production) */
+.films360-debug .vp-portfolio .vp-portfolio__item {
+    border: 2px solid #ef4444 !important;
+}
+
+.films360-debug .vp-portfolio .vp-portfolio__item .films360-custom-fields {
+    background: rgba(255, 255, 0, 0.1) !important;
+}
+
+.films360-debug .vp-portfolio .vp-portfolio__item .films360-hover-video {
+    border: 2px solid #10b981 !important;
+}
+
+/* CRITICAL: DO NOT OVERRIDE VISUAL PORTFOLIO'S NATIVE GRID CLASSES */
+/* Let Visual Portfolio handle all grid layout logic completely */
+/* These classes should work with any Visual Portfolio grid configuration */
+
+/* Support for Visual Portfolio's native column classes (if they exist) */
+/* Only add enhancements that don't interfere with layout */
+
+/* Ensure card is fully clickable: pass through clicks from overlays/content */
+.vp-portfolio .vp-portfolio__item .vp-portfolio__item-overlay,
+.vp-portfolio .vp-portfolio__item .vp-portfolio__item-content,
+.vp-portfolio .vp-portfolio__item .films360-custom-fields {
+    pointer-events: none !important; /* Allow parent card to receive click */
+}
+
+.vp-portfolio .vp-portfolio__item {
+    cursor: pointer !important;
+}
+
+/* Full-card overlay anchor to make the whole card clickable */
+.vp-portfolio .vp-portfolio__item a.films360-card-link {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    display: block !important;
+    z-index: 10 !important; /* Below hover video, above content */
+    text-indent: -9999px !important; /* Hide text if any */
+    background: transparent !important;
+}
+
+/* Ensure cards expand to fit content regardless of grid layout */
+.vp-portfolio .vp-portfolio__item {
+    height: auto !important;
+    min-height: auto !important;
+    /* Do not override Visual Portfolio's flex/grid sizing */
+}
+
+/* Ensure content area expands properly */
+.vp-portfolio .vp-portfolio__item .vp-portfolio__item-overlay,
+.vp-portfolio .vp-portfolio__item .vp-portfolio__item-content {
+    height: auto !important;
+    min-height: auto !important;
+    flex: 1 !important; /* Allow content to expand */
+}
+
+/* FINAL NOTE: Do not set grid properties on .vp-portfolio__items to preserve plugin control */
+
+
+/* Page padding overrides: remove top/bottom padding on all pages */
+.entry-content-wrap {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* Hide Visual Portfolio outro overlays (native popup outro) */
+.vp-outro-wrapper,
+.vp-outro,
+[class*="vp-outro"],
+[class*="Outro_module_outroWrapper"],
+[class*="outroWrapper"],
+[class*="Outro"],
+[class*="outro"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Safety: prevent any embedded Vimeo players from showing inside grid items */
+.vp-portfolio .vp-portfolio__item iframe[src*="player.vimeo.com/video/"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Reinforce at tablet/mobile to override parent theme media queries */
+@media (max-width: 1024px) {
+  .entry-content-wrap {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+}
+
+/* === Typography sizing overrides: reduce title and ACF custom fields in grid === */
+/* Force smaller sizing for portfolio grid titles and all injected ACF custom fields */
+.vp-portfolio .vp-portfolio__item .vp-portfolio__item-title,
+.vp-portfolio .vp-portfolio__item h3,
+.vp-portfolio .vp-portfolio__item h2 {
+  font-size: 0.85em !important;
+}
+
+/* ACF custom fields rendered in grid */
+.vp-portfolio .vp-portfolio__item .films360-item-description,
+.vp-portfolio .vp-portfolio__item .films360-item-meta,
+.vp-portfolio .vp-portfolio__item .films360-item-categories,
+.vp-portfolio .vp-portfolio__item .films360-category {
+  font-size: 0.85em !important;
+}
+
+/* Ensure mobile queries don't upscale these again */
+@media (max-width: 768px) {
+  .vp-portfolio .vp-portfolio__item .vp-portfolio__item-title,
+  .vp-portfolio .vp-portfolio__item h3,
+  .vp-portfolio .vp-portfolio__item h2 {
+    font-size: 0.85em !important;
+  }
+  .vp-portfolio .vp-portfolio__item .films360-item-description,
+  .vp-portfolio .vp-portfolio__item .films360-item-meta,
+  .vp-portfolio .vp-portfolio__item .films360-item-categories,
+  .vp-portfolio .vp-portfolio__item .films360-category {
+    font-size: 0.85em !important;
+  }
+}
+
+/* Increase selector specificity for Work page to override prior Work-page sizing */
+.films360-portfolio-page .vp-portfolio .vp-portfolio__item .vp-portfolio__item-title,
+.films360-portfolio-page .vp-portfolio .vp-portfolio__item h3,
+.films360-portfolio-page .vp-portfolio .vp-portfolio__item h2 {
+  font-size: 0.85em !important;
+}
+.films360-portfolio-page .vp-portfolio .vp-portfolio__item .films360-item-description,
+.films360-portfolio-page .vp-portfolio .vp-portfolio__item .films360-item-meta,
+.films360-portfolio-page .vp-portfolio .vp-portfolio__item .films360-item-categories,
+.films360-portfolio-page .vp-portfolio .vp-portfolio__item .films360-category {
+  font-size: 0.85em !important;
+}
+
+ /* === Compact grid: hide title under thumbnail, show on image hover, tighten spacing === */
+ /* Hide the textual title area under thumbnails in the grid */
+ .vp-portfolio .vp-portfolio__item .vp-portfolio__item-title,
+ .vp-portfolio .vp-portfolio__item h3,
+ .vp-portfolio .vp-portfolio__item h2 {
+   display: none !important;
+ }
+
+ /* Hover title overlay on the image wrapper using data-title */
+.vp-portfolio .vp-portfolio__item .vp-portfolio__item-img-wrap a,
+.vp-portfolio .vp-portfolio__item .vp-portfolio__item-image-wrap,
+.vp-portfolio .vp-portfolio__item .vp-portfolio__item-img {
+  position: relative !important;
+  overflow: hidden !important;
+  display: block !important;
+}
+.vp-portfolio .vp-portfolio__item .films360-title-overlay {
+  position: absolute !important;
+  left: 8px !important;
+  right: 8px !important;
+  bottom: 8px !important;
+  padding: 6px 10px !important;
+  background: rgba(0,0,0,0.6) !important; /* solid, no gradient */
+  color: #fff !important;
+  font-size: 0.9em !important;
+  font-weight: 600 !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.01em !important;
+  border-radius: 0 !important;
+  opacity: 0 !important;
+  transform: translateY(4px) !important;
+  transition: opacity 0.15s ease, transform 0.15s ease !important;
+  z-index: 999 !important; /* ensure above any VP link overlays */
+  pointer-events: none !important;
+}
+.vp-portfolio .vp-portfolio__item:hover .films360-title-overlay,
+.vp-portfolio .vp-portfolio__item:focus-within .films360-title-overlay,
+.vp-portfolio .vp-portfolio__item a:hover .films360-title-overlay,
+.vp-portfolio .vp-portfolio__item .vp-portfolio__item-image-wrap:hover .films360-title-overlay {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+.vp-portfolio .vp-portfolio__item .vp-portfolio__item-img::after,
+.vp-portfolio .vp-portfolio__item .vp-portfolio__item-image-wrap::after {
+  content: none !important;
+  display: none !important;
+  background: none !important;
+  padding: 0 !important;
+  opacity: 0 !important;
+}
+
+ /* Tighten content padding for a compact card (reduce a LOT) */
+.vp-portfolio .vp-portfolio__item .vp-portfolio__item-overlay,
+.vp-portfolio .vp-portfolio__item .vp-portfolio__item-content {
+  padding: 2px !important;
+}
+
+ /* Reduce spacing between ACF fields for a tighter stack */
+.vp-portfolio .vp-portfolio__item .films360-item-description {
+  margin: 0 0 2px 0 !important;
+  padding: 0 !important;
+  border-bottom: none !important; /* remove separator border for tighter stack */
+}
+.vp-portfolio .vp-portfolio__item .films360-item-meta {
+  margin: 0 0 1px 0 !important;
+  padding: 0 !important;
+}
+.vp-portfolio .vp-portfolio__item .films360-item-categories {
+  margin-top: 2px !important;
+}
+
+/* Explicitly reduce Visual Portfolio native meta padding if present */
+.vp-portfolio .vp-portfolio__item .vp-portfolio__item-meta {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+.vp-portfolio .vp-portfolio__item .films360-category {
+  margin-right: 3px !important;
+  margin-bottom: 1px !important;
+  padding: 0 5px !important; /* much tighter chip */
+}
+/* Normalize inner element spacing and line-height so all fields sit tightly one under another */
+.vp-portfolio .vp-portfolio__item .films360-custom-fields,
+.vp-portfolio .vp-portfolio__item .films360-item-description,
+.vp-portfolio .vp-portfolio__item .films360-item-meta,
+.vp-portfolio .vp-portfolio__item .films360-item-categories {
+  line-height: 1.25 !important;
+}
+.vp-portfolio .vp-portfolio__item .films360-item-meta > *,
+.vp-portfolio .vp-portfolio__item .films360-item-description > *,
+.vp-portfolio .vp-portfolio__item .films360-custom-fields > * {
+  margin: 0 !important;
+}
+
+/* Unify typography (font, weight, color, size) for all custom fields under thumbnails */
+.vp-portfolio .vp-portfolio__item .films360-custom-fields,
+.vp-portfolio .vp-portfolio__item .films360-custom-fields * {
+  font-family: inherit !important;
+  font-weight: 400 !important;
+  color: inherit !important;
+  font-size: 0.85em !important;
+}
+
+/* Ensure inner elements in meta blocks don't add extra space */
+.vp-portfolio .vp-portfolio__item .films360-item-meta > *,
+.vp-portfolio .vp-portfolio__item .films360-item-description > * {
+  margin: 0 !important;
+}
+
+/* Stack ACF fields uniformly with minimal spacing */
+.vp-portfolio .vp-portfolio__item .films360-custom-fields {
+  margin: 0 !important;
+  padding: 8px 0 0 0 !important; /* 8px padding above the ACF items as a whole */
+  border: 0 !important; /* remove any borders around the ACF block */
+  border-top: none !important;
+  border-bottom: none !important; /* explicitly remove border under the ACF items */
+}
+.vp-portfolio .vp-portfolio__item .films360-custom-fields > * {
+  display: block !important;
+  margin: 0 0 1px 0 !important; /* very tight vertical rhythm */
+  padding: 0 !important;
+}
+.vp-portfolio .vp-portfolio__item .films360-custom-fields > * {
+  border: 0 !important; /* ensure no child field shows a bottom border */
+}
+.vp-portfolio .vp-portfolio__item .films360-custom-fields > *:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* Ensure inner elements in meta blocks don't add extra space */
+.vp-portfolio .vp-portfolio__item .films360-item-meta > *,
+.vp-portfolio .vp-portfolio__item .films360-item-description > * {
+  margin: 0 !important;
+}
+
+ /* Mobile: keep compact spacing and show hover title on tap-focus (simulate hover) */
+ @media (hover: none) and (pointer: coarse) {
+   .vp-portfolio .vp-portfolio__item.touch-active .vp-portfolio__item-img::after,
+   .vp-portfolio .vp-portfolio__item.touch-active .vp-portfolio__item-image-wrap::after {
+     opacity: 1 !important;
+     transform: translateY(0) !important;
+   }
+ }

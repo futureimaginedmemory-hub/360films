@@ -1,0 +1,170 @@
+{
+    "key": "group_66b3e7d2b1c4e",
+    "title": "Work Item Details",
+    "fields": [
+        {
+            "key": "field_66b3e7d2b5a1b",
+            "label": "Short Description",
+            "name": "short_description",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Max 160 characters. This will be mapped to Rank Math meta description.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": 160,
+            "rows": 4,
+            "new_lines": "wpautop",
+            "acfe_textarea_code": 0
+        },
+        {
+            "key": "field_66b3e7d2b5a62",
+            "label": "Video URL",
+            "name": "video_url",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "YouTube or Vimeo URL",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_66b3e7d2b5a8e",
+            "label": "Producer Role",
+            "name": "producer_role",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_66b3e7d2b5ab9",
+            "label": "Year",
+            "name": "year",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "min": "",
+            "max": "",
+            "placeholder": "",
+            "step": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_66b3e7d2b5ae4",
+            "label": "Credits/Captions",
+            "name": "credits_captions",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Optional",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "rows": 4,
+            "new_lines": "wpautop",
+            "acfe_textarea_code": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "work"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "ACF field group for Work Custom Post Type",
+    "acffc_display_layout": "row",
+    "acffc_thumbnail": "",
+    "acffc_icon": "",
+    "acffc_category": "",
+    "acffc_render_template": "",
+    "acffc_render_style": "",
+    "acffc_render_script": "",
+    "acffc_settings": "",
+    "acfe_display_title": "",
+    "acfe_permissions": "",
+    "acfe_note": "",
+    "acfe_categories": "",
+    "acfe_form": 0,
+    "acfe_form_edit": {
+        "post_title": 0,
+        "post_name": 0,
+        "post_content": 0,
+        "post_status": 0,
+        "post_author": 0,
+        "post_thumbnail": 0,
+        "post_excerpt": 0,
+        "post_type": 0,
+        "post_date": 0,
+        "menu_order": 0,
+        "comment_status": 0,
+        "ping_status": 0,
+        "sticky": 0,
+        "post_password": 0,
+        "post_parent": 0,
+        "page_template": 0,
+        "post_format": 0,
+        "tags": 0,
+        "categories": 0,
+        "taxonomy": 0
+    },
+    "acfe_form_submit": "",
+    "acfe_admin_vertical_columns": "false",
+    "acfe_admin_col_width": "",
+    "acfe_admin_col_offset": "",
+    "acfe_admin_col_pull": "",
+    "acfe_admin_col_push": "",
+    "_acfe_local_json": "",
+    "_acfe_pseudo_blocs": "",
+    "_edit_lock": "",
+    "_edit_last": ""
+}
+
